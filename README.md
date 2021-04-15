@@ -8,6 +8,8 @@ Upon connection to the socket with the required parameters, connections are regi
 
 Required connection parameters and notifications are detailed later in this document.
 
+> You can specify the endpoint for this server when using the [Conference Examples](https://github.com/red5pro/streaming-html5/tree/master/src/page/test/conference) using the `socket` query parameter, e.g., [http://localhost:5080/webrtcexamples/test/conference/socket=localhost:8001](http://localhost:5080/webrtcexamples/test/conference/?socket=localhost:8001)
+
 # Requirements
 
 * NodeJS v10+
@@ -52,10 +54,13 @@ Upon any successfuly connection, each client associated with a `room` will be no
 
 > It is important to note that this list will be reflective of all streams that are currently "active" in the room. It will grow as more client connections are made and shrink as client connections are closed.
 
-Each client will be notified of the "active" list with a `JSON Array` listing of each `streamName`. Each `streamName` is a `String`.
+Each client will be notified of the object with the associated `room` and a `streams` list of a `JSON Array` listing of each `streamName`. Each `streamName` is a `String`.
 
 **Example**
 
 ```
-['stream1', 'stream2', 'stream3']
+{
+  room: 'room1',
+  streams: ['stream1', 'stream2', 'stream3']
+}
 ```

@@ -70,7 +70,7 @@ npm run start
 or better yet,
 
 ```sh
-forever index.js
+forever start index.js
 ```
 
 > Running the above will start the server on the default port of `8001`

@@ -20,6 +20,7 @@ curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 sudo apt-get install build-essential
+sudo npm install forever -g
 ```
 
 > This project was developed with the latest NodeJS & NPM as of the time of this writing (April 15th, 2021).
@@ -29,11 +30,47 @@ sudo apt-get install build-essential
 ```sh
 npm install
 ```
+# SSL
+
+For most NodeJS implementations, it is necessary to generate SSL certificate files, which are converted into .crt and .key files to be stored in the `<service>/cert` folder.
+
+## Using Let's Encrypt
+
+The following can be run to install Let's Encrypt Certbot on Ubuntu (`snap` is included with most Ubuntu distributions by default)
+
+1.	sudo snap install core; sudo snap refresh core
+2.	sudo snap install --classic certbot
+3.	sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+To generate the cert, run `sudo certbot certonly --standalone --email <your-email> --agree-tos -d <server-fqdn>`  (for example: `sudo certbot certonly --standalone --email jessica@infrared5.com --agree-tos -d test01.red5.net`)
+
+You will then need to copy the fullchain and privatekey to the cert directory of your application
+
+```sh
+sudo cp /etc/letsencrypt/archive/<server-fqdn>/fullchain1.pem ~/<nodejs-server>/cert/certificate.crt
+sudo cp /etc/letsencrypt/archive/<server-fqdn>/privkey1.pem ~/<nodejs-server>/cert/privateKey.key
+sudo chmod +r ~/<nodejs-server>/cert/*
+```
+
+Your index.js file then needs to be modified with the full path to the certificate and privateKey files (replace with the appropriate paths):
+
+```js
+if (useSSL) {
+  cert = fs.readFileSync('/home/ubuntu/serverapp/cert/certificate.crt')
+  key = fs.readFileSync('/home/ubuntu/serverapp/cert/privateKey.key')
+  port = 443
+```
 
 # Usage
 
 ```sh
 npm run start
+```
+
+or better yet,
+
+```sh
+forever index.js
 ```
 
 > Running the above will start the server on the default port of `8001`

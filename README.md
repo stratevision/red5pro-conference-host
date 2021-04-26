@@ -94,7 +94,7 @@ Any connecting clients should provide the following query paramters in the URL w
 
 ## Payloads
 
-Upon any successfuly connection, each client associated with a `room` will be notified of an updated in-memory list of `streamName`s.
+Upon any successfuly connection, each client associated with a `room` will be notified of an updated in-memory list of every `streamName`.
 
 > It is important to note that this list will be reflective of all streams that are currently "active" in the room. It will grow as more client connections are made and shrink as client connections are closed.
 

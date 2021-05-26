@@ -73,7 +73,9 @@ or better yet,
 forever start index.js
 ```
 
-> Running the above will start the server on the default port of `8001`
+to view the log location and status of the running process, run `forever list`
+
+> Running the above will start the server on the default port which is defined in index.js
 
 Alternatively:
 

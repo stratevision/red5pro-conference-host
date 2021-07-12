@@ -110,3 +110,11 @@ Each client will be notified of the object with the associated `room` and a `str
   streams: ['stream1', 'stream2', 'stream3']
 }
 ```
+
+## Forever Commands
+
+	•	forever start: starts a script as a daemon.
+	•	forever stop: stops the daemon script by Id|Uid|Pid|Index|Script.
+	•	forever stopall: stops all running scripts.
+	•	forever restart: restarts the daemon script.
+	•	forever restartall: restarts all running forever scripts.

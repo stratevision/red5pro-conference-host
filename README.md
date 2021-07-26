@@ -52,6 +52,8 @@ sudo cp /etc/letsencrypt/archive/<server-fqdn>/privkey1.pem ~/<nodejs-server>/ce
 sudo chmod +r ~/<nodejs-server>/cert/*
 ```
 
+>  (note: the number will increment as you renew, i.e., fullchain1.pem --> fullchain2.pem, etc.
+
 Your index.js file then needs to be modified with the full path to the certificate and privateKey files (replace with the appropriate paths):
 
 ```js

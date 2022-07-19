@@ -16,7 +16,7 @@ Required connection parameters and notifications are detailed later in this docu
 * NPM 6+
 
 ```sh
-curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 sudo apt-get install build-essential

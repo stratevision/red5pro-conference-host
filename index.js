@@ -14,8 +14,8 @@ let key
 const useSSL = process.env.SSL === 'true' || false
 if (useSSL) {
   console.log('Using SSL.')
-  cert = fs.readFileSync('./cert/certificate.crt')
-  key = fs.readFileSync('./cert/privateKey.key')
+  cert = fs.readFileSync('../cert/certificate.crt')
+  key = fs.readFileSync('../cert/privateKey.key')
   port = 443
 }
 
